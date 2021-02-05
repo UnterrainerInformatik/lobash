@@ -8,6 +8,7 @@ You can source them directly from GitHub if you like.
 ```bash
 #!/usr/bin/env bash
 source <(curl -s "https://raw.githubusercontent.com/UnterrainerInformatik/lobash/master/lobash.sh")
+_set_verbose # or just _set
 
 _col _YELLOW "test2"
 # Will print "test2" to std-out in yellow characters.
