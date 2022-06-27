@@ -587,6 +587,63 @@ _no_files_or_die () {
 }
 
 # ---------------------------------------------------------------------------------------
+# Converts an input to all-lowercase characters.
+#
+# Example:
+#   _to_lower "HIHIHI"
+# will return
+#   "hihihi"
+# ---------------------------------------------------------------------------------------
+_to_lower () {
+  echo "${1}" | tr '[:upper:]' '[:lower:]'
+}
+
+# ---------------------------------------------------------------------------------------
+# Converts an input to all-uppercase characters.
+#
+# Example:
+#   _to_upper "hahaha"
+# will return
+#   "HAHAHA"
+# ---------------------------------------------------------------------------------------
+_to_upper () {
+  echo "${1}" | tr '[:lower:]' '[:upper:]'
+}
+
+# ---------------------------------------------------------------------------------------
+# Extracts the filename of a given file by removing the file-extension.
+#
+# Example:
+#   _cut_extension "/mnt/movies5/blubb.mp4"
+# will return
+#   "/mnt/movies5/blubb"
+# ---------------------------------------------------------------------------------------
+_cut_extension () {
+  local f="${1}"
+  local e=$(extension "$f")
+  local n=$((${#e}+1))
+  echo ${f:0:${#f}-$n}
+}
+
+# ---------------------------------------------------------------------------------------
+# Fetches the extension of a given file.
+#
+# Example:
+#   extension "/h/bibi.txt.sav"
+# will return
+#   "sav"
+# ---------------------------------------------------------------------------------------
+_extension () {
+  if [[ "$1" = *.* ]]; then
+    a=".${1##*.}"
+    echo "${a:1}"
+  else
+    echo ''
+  fi
+}
+
+
+# ---------------------------------------------------------------------------------------
 # Writes a message to standard-out, consisting of the name of current machine, user, 
 # the IP the caller came from (if connected via SSH) and the IP the script is currently
 # running on.

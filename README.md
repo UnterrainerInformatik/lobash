@@ -64,6 +64,10 @@ _BG_WHITE
 # -----------------------------------------------------------------------
 # Functions
 # -----------------------------------------------------------------------
+_to_upper <string>
+_to_lower <string>
+_cut_extension <filename-with-extension>
+_extension <filename-with-extension>
 
 # -----------------------------------------------------------------------
 # control
@@ -117,6 +121,8 @@ _files [<filename>*]
 _files_or_die [<filename>*]
 _no_files [<filename>*]
 _no_files_or_die [<filename>*]
+_dirs [<dirname>*]
+_dies_or_die [<dirname>*]
 
 # utils
 _ask_to_continue <message>
