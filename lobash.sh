@@ -498,6 +498,35 @@ _functions_or_die () {
 }
 
 # ---------------------------------------------------------------------------------------
+# Returns 0 if the given directory exists, 1 otherwise.
+#
+# Example:
+#   _dirs "somedir" "someother"
+# ---------------------------------------------------------------------------------------
+_dirs () {
+  for v in ${@}; do
+    if [[ ! -d "${v}" ]]; then
+      return 1
+    fi
+  done
+  return 0
+}
+
+# ---------------------------------------------------------------------------------------
+# Ensure that the given directory exists.
+#
+# Example:
+#   _dirs_or_die "somedir" "someother"
+# ---------------------------------------------------------------------------------------
+_dirs_or_die () {
+  for v in ${@}; do
+    if [[ ! -d "${v}" ]]; then
+      _die "The directory '${v}' has to exist to run this script!"
+    fi
+  done
+}
+
+# ---------------------------------------------------------------------------------------
 # Returns 0 if the given file exists, 1 otherwise.
 # Cannot be a directory or device.
 #
