@@ -611,21 +611,6 @@ _to_upper () {
 }
 
 # ---------------------------------------------------------------------------------------
-# Extracts the filename of a given file by removing the file-extension.
-#
-# Example:
-#   _cut_extension "/mnt/movies5/blubb.mp4"
-# will return
-#   "/mnt/movies5/blubb"
-# ---------------------------------------------------------------------------------------
-_cut_extension () {
-  local f="${1}"
-  local e=$(extension "$f")
-  local n=$((${#e}+1))
-  echo ${f:0:${#f}-$n}
-}
-
-# ---------------------------------------------------------------------------------------
 # Fetches the extension of a given file.
 #
 # Example:
@@ -640,6 +625,21 @@ _extension () {
   else
     echo ''
   fi
+}
+
+# ---------------------------------------------------------------------------------------
+# Extracts the filename of a given file by removing the file-extension.
+#
+# Example:
+#   _cut_extension "/mnt/movies5/blubb.mp4"
+# will return
+#   "/mnt/movies5/blubb"
+# ---------------------------------------------------------------------------------------
+_cut_extension () {
+  local f="${1}"
+  local e=$(_extension "$f")
+  local n=$((${#e}+1))
+  echo ${f:0:${#f}-$n}
 }
 
 # ---------------------------------------------------------------------------------------
