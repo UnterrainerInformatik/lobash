@@ -66,6 +66,7 @@ _BG_WHITE
 # -----------------------------------------------------------------------
 _to_upper <string>
 _to_lower <string>
+_array_contains <element> <array>
 _cut_extension <filename-with-extension>
 _extension <filename-with-extension>
 

@@ -642,6 +642,23 @@ _extension () {
   fi
 }
 
+# ---------------------------------------------------------------------------------------
+# Finds out if an array contains the given element.
+#
+# Example:
+#   VALID_FILES=("mp4" "avi" "mov")
+#   ext=mp4
+#   arrayContains "$ext" "${VALID_FILES[@]}"
+# will return
+#   1
+# ---------------------------------------------------------------------------------------
+_array_contains () {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
+}
+
 
 # ---------------------------------------------------------------------------------------
 # Writes a message to standard-out, consisting of the name of current machine, user, 
